@@ -1,5 +1,5 @@
 {
-  "name": "@ohos/surface",
+  "name": "@ohos/surface_lite",
   "description": "Graphic shared memory",
   "version": "3.1",
   "license": "Apache License 2.0",
@@ -12,7 +12,6 @@
   "component": {
     "name": "surface_lite",
     "subsystem": "graphic",
-    "syscap": [ "SystemCapability.Graphic.SurfaceLite" ],
     "feature": [],
     "adapted_system_type": [ "small" ],
     "rom": "110KB",
