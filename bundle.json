@@ -21,9 +21,9 @@
         "bounds_checking_function"
       ],
       "components": [
-        "hilog_lite",
         "peripheral_display",
-        "peripheral_input"
+        "graphic_utils_lite",
+        "ipc"
       ]
     },
     "build": {
