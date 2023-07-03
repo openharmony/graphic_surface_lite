@@ -21,7 +21,7 @@
         "bounds_checking_function"
       ],
       "components": [
-        "peripheral_display",
+        "drivers_peripheral_display",
         "graphic_utils_lite",
         "ipc"
       ]
