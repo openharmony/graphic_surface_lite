@@ -100,7 +100,7 @@ BufferHandle* BufferManager::AllocateBufferHandle(SurfaceBufferImpl& buffer) con
     uint32_t total = buffer.GetReserveFds() + buffer.GetReserveInts() + sizeof(BufferHandle);
     BufferHandle* bufferHandle = static_cast<BufferHandle *>(malloc(total));
     if (bufferHandle != nullptr) {
-        bufferHandle->key = buffer.GetKey();
+        bufferHandle->fd = buffer.GetKey();
         bufferHandle->phyAddr = buffer.GetPhyAddr();
         bufferHandle->size = buffer.GetSize();
         if (!ConvertUsage(bufferHandle->usage, buffer.GetUsage())) {
@@ -131,7 +131,7 @@ SurfaceBufferImpl* BufferManager::AllocBuffer(AllocInfo info)
     if (buffer != nullptr) {
         buffer->SetMaxSize(bufferHandle->size);
         buffer->SetVirAddr(bufferHandle->virAddr);
-        buffer->SetKey(bufferHandle->key);
+        buffer->SetKey(bufferHandle->fd);
         buffer->SetPhyAddr(bufferHandle->phyAddr);
         buffer->SetStride(bufferHandle->stride);
         buffer->SetReserveFds(bufferHandle->reserveFds);
@@ -139,7 +139,7 @@ SurfaceBufferImpl* BufferManager::AllocBuffer(AllocInfo info)
         for (uint32_t i = 0; i < (bufferHandle->reserveFds + bufferHandle->reserveInts); i++) {
             buffer->SetInt32(i, bufferHandle->reserve[i]);
         }
-        BufferKey key = {bufferHandle->key, bufferHandle->phyAddr};
+        BufferKey key = {bufferHandle->fd, bufferHandle->phyAddr};
         bufferHandleMap_.insert(std::make_pair(key, bufferHandle));
         GRAPHIC_LOGD("Alloc buffer succeed to shared memory segment.");
     } else {
