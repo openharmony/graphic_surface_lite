@@ -55,7 +55,7 @@ SurfaceBufferImpl* BufferClientProducer::RequestBuffer(uint8_t wait)
 
     SurfaceBufferImpl* buffer = new SurfaceBufferImpl();
     if (buffer == nullptr) {
-        GRAPHIC_LOGW("SurfaceBufferImpl buffer is null, usage(%d)", buffer->GetUsage());
+        GRAPHIC_LOGW("SurfaceBufferImpl buffer is null");
         FreeBuffer(reinterpret_cast<void *>(ptr));
         return nullptr;
     }
