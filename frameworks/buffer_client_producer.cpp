@@ -54,6 +54,11 @@ SurfaceBufferImpl* BufferClientProducer::RequestBuffer(uint8_t wait)
     }
 
     SurfaceBufferImpl* buffer = new SurfaceBufferImpl();
+    if (buffer == nullptr) {
+        GRAPHIC_LOGW("SurfaceBufferImpl buffer is null");
+        FreeBuffer(reinterpret_cast<void *>(ptr));
+        return nullptr;
+    }
     buffer->ReadFromIpcIo(reply);
     BufferManager* manager = BufferManager::GetInstance();
     if (manager == nullptr) {
