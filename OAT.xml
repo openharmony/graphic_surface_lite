@@ -12,13 +12,13 @@
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
      limitations under the License.
-     
+
      Notes:
      This is project config file for OpenHarmony OSS Audit Tool. If you have any questions or concerns, please send an email to chenyaxun.
 -->
 <!-- OAT (OSS Audit Tool) configuration guide:
 basedir: Root dir. basedir + project path is the real source file location.
-licensefile: 
+licensefile:
 If the project doesn't have "LICENSE" in root dir, please define all the license files in this project. OAT will check license files according to this rule.
 
 tasklist (for the batch mode only):
@@ -57,6 +57,7 @@ Note: If the text contains special characters, please escape them according to t
 <configuration>
     <oatconfig>
         <licensefile>LICENSE</licensefile>
+        <filefilterlist>
             <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binary file policies" >
                 <filteritem type="filepath" name="figures/.*" desc="Self-developed image"/>
             </filefilter>
